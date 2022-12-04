@@ -68,6 +68,18 @@ app.post('/add/worker', (req, res) => {
         }
     });
 });
+app.post('/add/ingredient', (req, res) => {
+    const barcode = req.body.barcode;
+    const name = req.body.name;
+    const weight = req.body.weight;
+    db.query('call add_ingredient(?, ?, ?)', [barcode, name, weight], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
 
 // QUERYING
 app.get('/username/:username', (req, res) => {
@@ -88,7 +100,6 @@ app.get('/employee/:username', (req, res) => {
         }
     });
 });
-
 app.get('/employee/:taxId', (req, res) => {
     db.query("select taxId from employees where taxId=?", [req.params.taxId], (err, result) => {
         if (err) {
@@ -98,7 +109,6 @@ app.get('/employee/:taxId', (req, res) => {
         }
     });
 });
-
 app.get('/pilot/:licenseId', (req, res) => {
    db.query("select licenseId from pilots where licenseId=?", [req.params.licenseId], (err, result) => {
        if (err) {
@@ -107,6 +117,15 @@ app.get('/pilot/:licenseId', (req, res) => {
            res.send(result);
        }
    });
+});
+app.get('/ingredient/:barcode', (req, res) => {
+    db.query("select barcode from ingredients where barcode=?", [req.params.barcode], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
 });
 
 app.listen(3001, () => {

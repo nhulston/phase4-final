@@ -37,7 +37,7 @@ export default function Worker() {
     return (
         <div>
             <Head>
-                <title>Add Pilot</title>
+                <title>Add Worker</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
