@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const RedirectButton = styled.a`
   display: flex;
-  margin: 50px auto;
+  margin: 10px auto;
   width: 200px;
   height: 50px;
   font-size: 20px;

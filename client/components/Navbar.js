@@ -34,7 +34,7 @@ function Navbar() {
             <List>
                 <ListItem><Atag className="active" href="/">Home</Atag></ListItem>
                 <ListItem><Atag href="/add">Add</Atag></ListItem>
-                <ListItem><Atag href="/admin">Admin Panel</Atag></ListItem>
+                {/*<ListItem><Atag href="/admin">Admin Panel</Atag></ListItem>*/}
             </List>
         </Nav>
     );
