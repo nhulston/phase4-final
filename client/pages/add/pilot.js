@@ -30,7 +30,7 @@ export default function Pilot() {
         }
 
         // Ensure username exists and check if licenseId exists
-        Axios.get("http://localhost:3001/username/" + username).then(r => {
+        Axios.get("http://localhost:3001/employee/" + username).then(r => {
             if (r.data.length === 0) {
                 alert("Pilot username does not exist");
                 return;

@@ -58,10 +58,29 @@ app.post('/add/pilot', (req, res) => {
         }
     });
 });
+app.post('/add/worker', (req, res) => {
+    const username = req.body.username;
+    db.query('call add_worker_role(?)', [username], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
 
 // QUERYING
 app.get('/username/:username', (req, res) => {
     db.query("select username from users where username=?", [req.params.username], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.get('/employee/:username', (req, res) => {
+    db.query("select username from employees where username=?", [req.params.username], (err, result) => {
         if (err) {
             console.log(err);
         } else {
