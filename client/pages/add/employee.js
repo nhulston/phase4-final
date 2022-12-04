@@ -51,20 +51,34 @@ export default function Index() {
             return;
         }
 
+        // Check if username & tax id exists
+        Axios.get("http://localhost:3001/username/" + username).then(r => {
+            if (r.data.length > 0) {
+                alert("Username already exists");
+                return;
+            }
 
-        Axios.post("http://localhost:3001/add/employee", {
-            username: username,
-            firstName: firstName,
-            lastName: lastName,
-            address: address,
-            birthday: birthday,
-            taxId: taxId,
-            hireDate: hireDate,
-            experience: experience,
-            salary: salary,
-        }).then(() => {
-            console.log("success");
-            document.location.href="/";
+            Axios.get("http://localhost:3001/employee/" + taxId).then(r2 => {
+                if (r2.data.length > 0) {
+                    alert("Tax ID already exists");
+                    return;
+                }
+
+                Axios.post("http://localhost:3001/add/employee", {
+                    username: username,
+                    firstName: firstName,
+                    lastName: lastName,
+                    address: address,
+                    birthday: birthday,
+                    taxId: taxId,
+                    hireDate: hireDate,
+                    experience: experience,
+                    salary: salary,
+                }).then(() => {
+                    console.log("success");
+                    document.location.href="/";
+                });
+            });
         });
     };
 

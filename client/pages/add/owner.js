@@ -36,17 +36,23 @@ export default function Index() {
             return;
         }
 
-        // TODO check if username is unique
+        // Check if username exists
+        Axios.get("http://localhost:3001/username/" + username).then(r => {
+            if (r.data.length > 0) {
+                alert("Username already exists");
+                return;
+            }
 
-        Axios.post("http://localhost:3001/add/owner", {
-            username: username,
-            firstName: firstName,
-            lastName: lastName,
-            address: address,
-            birthday: birthday,
-        }).then(() => {
-            console.log("success");
-            document.location.href="/";
+            Axios.post("http://localhost:3001/add/owner", {
+                username: username,
+                firstName: firstName,
+                lastName: lastName,
+                address: address,
+                birthday: birthday,
+            }).then(() => {
+                console.log("success");
+                document.location.href="/";
+            });
         });
     };
 

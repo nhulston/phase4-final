@@ -48,8 +48,18 @@ app.post('/add/employee', (req, res) => {
 });
 
 // QUERYING
-app.get('/get/username', (req, res) => {
-    db.query(`select count(*) from users where username=?`, [req.body.username], (err, result) => {
+app.get('/username/:username', (req, res) => {
+    db.query("select username from users where username=?", [req.params.username], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.get('/employee/:taxId', (req, res) => {
+    db.query("select taxId from employees where taxId=?", [req.params.taxId], (err, result) => {
         if (err) {
             console.log(err);
         } else {
