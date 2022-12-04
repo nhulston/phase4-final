@@ -15,7 +15,7 @@ export default function Index() {
             <Wrapper>
                 <RedirectButton href={'/add/owner'}>Owner</RedirectButton>
                 <RedirectButton href={'/add/employee'}>Employee</RedirectButton>
-                <RedirectButton>Pilot</RedirectButton>
+                <RedirectButton href={'/add/pilot'}>Pilot</RedirectButton>
                 <RedirectButton>Worker</RedirectButton>
                 <RedirectButton>Ingredient</RedirectButton>
                 <RedirectButton>Drone</RedirectButton>

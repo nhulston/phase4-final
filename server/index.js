@@ -46,6 +46,18 @@ app.post('/add/employee', (req, res) => {
         }
     });
 });
+app.post('/add/pilot', (req, res) => {
+    const username = req.body.username;
+    const licenseId = req.body.licenseId;
+    const experience = req.body.experience;
+    db.query('call add_pilot_role(?, ?, ?)', [username, licenseId, experience], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
 
 // QUERYING
 app.get('/username/:username', (req, res) => {
@@ -66,6 +78,16 @@ app.get('/employee/:taxId', (req, res) => {
             res.send(result);
         }
     });
+});
+
+app.get('/pilot/:licenseId', (req, res) => {
+   db.query("select licenseId from pilots where licenseId=?", [req.params.licenseId], (err, result) => {
+       if (err) {
+           console.log(err);
+       } else {
+           res.send(result);
+       }
+   });
 });
 
 app.listen(3001, () => {

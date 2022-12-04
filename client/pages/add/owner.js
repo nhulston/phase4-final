@@ -6,7 +6,7 @@ import Field from "../../components/Field";
 import {Button} from "../../components/Button";
 import Axios from "axios";
 
-export default function Index() {
+export default function Owner() {
     const [username, setUsername] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
