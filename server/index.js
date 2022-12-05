@@ -80,6 +80,21 @@ app.post('/add/ingredient', (req, res) => {
         }
     });
 });
+app.post('/add/drone', (req, res) => {
+    const id = req.body.id;
+    const tag = req.body.tag;
+    const fuel = req.body.fuel;
+    const capacity = req.body.capacity;
+    const sales = req.body.sales;
+    const flownBy = req.body.flownBy;
+    db.query('call add_drone(?, ?, ?, ?, ?, ?)', [id, tag, fuel, capacity, sales, flownBy], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
 
 // QUERYING
 app.get('/username/:username', (req, res) => {
