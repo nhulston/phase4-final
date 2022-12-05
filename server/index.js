@@ -121,6 +121,19 @@ app.post('/add/delivery_service', (req, res) => {
         }
     });
 });
+app.post('/add/location', (req, res) => {
+    const label = req.body.label;
+    const xCoord = req.body.xCoord;
+    const yCoord = req.body.yCoord;
+    const space = req.body.space;
+    db.query('call add_location(?, ?, ?, ?)', [label, xCoord, yCoord, space], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
 
 // QUERYING
 app.get('/username/:username', (req, res) => {

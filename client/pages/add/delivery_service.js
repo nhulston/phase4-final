@@ -46,9 +46,7 @@ export default function DeliveryService() {
                 name: name,
                 homeBase: homeBase,
                 manager: manager
-            }).then((response) => {
-                console.log("RESPONSE: ");
-                console.log(response);
+            }).then(() => {
                 document.location.href="/";
             });
         });
