@@ -1,5 +1,5 @@
 ## Summary
-Blog creation CRUD app. Users can create, delete, and update blog posts.
+No views implemented yet. All 'Add' saved procedures are done, but other procedures are not done.
 
 ## How to run
 Starting the front end
