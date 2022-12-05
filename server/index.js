@@ -108,6 +108,19 @@ app.post('/add/restaurant', (req, res) => {
         }
     });
 });
+app.post('/add/delivery_service', (req, res) => {
+    const id = req.body.id;
+    const name = req.body.name;
+    const homeBase = req.body.homeBase;
+    const manager = req.body.manager;
+    db.query('call add_service(?, ?, ?, ?)', [id, name, homeBase, manager], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
 
 // QUERYING
 app.get('/username/:username', (req, res) => {
@@ -148,6 +161,15 @@ app.get('/pilot/:licenseId', (req, res) => {
 });
 app.get('/ingredient/:barcode', (req, res) => {
     db.query("select barcode from ingredients where barcode=?", [req.params.barcode], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.get('/delivery_service/:id', (req, res) => {
+    db.query("select id from delivery_services where id=?", [req.params.id], (err, result) => {
         if (err) {
             console.log(err);
         } else {
