@@ -19,8 +19,8 @@ export default function Index() {
                 <RedirectButton href={'/add/worker'}>Worker</RedirectButton>
                 <RedirectButton href={'/add/ingredient'}>Ingredient</RedirectButton>
                 <RedirectButton href={'/add/drone'}>Drone</RedirectButton>
-                <RedirectButton>Restaurant</RedirectButton>
-                <RedirectButton>Delivery Service</RedirectButton>
+                <RedirectButton href={'/add/restaurant'}>Restaurant</RedirectButton>
+                <RedirectButton href={'/add/delivery_service'}>Delivery Service</RedirectButton>
                 <RedirectButton>Location</RedirectButton>
             </Wrapper>
         </div>

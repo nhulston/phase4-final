@@ -95,6 +95,19 @@ app.post('/add/drone', (req, res) => {
         }
     });
 });
+app.post('/add/restaurant', (req, res) => {
+    const name = req.body.name;
+    const rating = req.body.rating;
+    const spent = req.body.spent;
+    const location = req.body.location;
+    db.query('call add_restaurant(?, ?, ?, ?)', [name, rating, spent, location], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
 
 // QUERYING
 app.get('/username/:username', (req, res) => {
