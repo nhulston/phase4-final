@@ -164,13 +164,13 @@ app.get('/employee/:taxId', (req, res) => {
     });
 });
 app.get('/pilot/:licenseId', (req, res) => {
-   db.query("select licenseId from pilots where licenseId=?", [req.params.licenseId], (err, result) => {
-       if (err) {
-           console.log(err);
-       } else {
-           res.send(result);
-       }
-   });
+    db.query("select licenseId from pilots where licenseId=?", [req.params.licenseId], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
 });
 app.get('/ingredient/:barcode', (req, res) => {
     db.query("select barcode from ingredients where barcode=?", [req.params.barcode], (err, result) => {
@@ -244,6 +244,45 @@ app.get('/view/service', (req, res) => {
         } else {
             res.send(result);
         }
+    });
+});
+
+// EDIT
+app.get('/edit/users', (req, res) => {
+    db.query("select * from users", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.delete('/delete/users/:username', (req, res) => {
+    db.query("delete from users where username=?", [req.params.username], (err, result) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.post('/update/users', (req, res) => {
+    const oldUserName = req.body.oldUserName;
+    const newUserName = req.body.newUserName;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const address = req.body.address;
+    console.log('Updating user: ' + oldUserName + ' to ' + newUserName);
+    db.query('update users set username=?, first_name=?, last_name=?, address=? where username=?',
+        [newUserName, firstName, lastName, address, oldUserName],
+        (err, result) => {
+            if (err) {
+                console.log(err);
+                res.send(err);
+            } else {
+                res.send(result);
+            }
     });
 });
 

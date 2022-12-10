@@ -36,6 +36,7 @@ function Navbar() {
                 <ListItem><Atag href="/add">Add</Atag></ListItem>
                 <ListItem><Atag href="/other">Other Procedures</Atag></ListItem>
                 <ListItem><Atag href="/view">View</Atag></ListItem>
+                <ListItem><Atag href="/edit">Edit</Atag></ListItem>
             </List>
         </Nav>
     );
