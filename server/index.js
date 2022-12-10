@@ -191,6 +191,62 @@ app.get('/delivery_service/:id', (req, res) => {
     });
 });
 
+// VIEWS
+app.get('/view/owner', (req, res) => {
+    db.query("select * from display_owner_view", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.get('/view/employee', (req, res) => {
+    db.query("select * from display_employee_view", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.get('/view/pilot', (req, res) => {
+    db.query("select * from display_pilot_view", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.get('/view/location', (req, res) => {
+    db.query("select * from display_location_view", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.get('/view/ingredient', (req, res) => {
+    db.query("select * from display_ingredient_view", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.get('/view/service', (req, res) => {
+    db.query("select * from display_service_view", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
 app.listen(3001, () => {
     console.log('Server started on port 3001');
 });
