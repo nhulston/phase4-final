@@ -231,7 +231,7 @@ app.put('/other/refuel_drone', (req, res) => {
         }
     });
 });
-//fuel_required
+
 //fly_drone
 
 app.post('/other/pruchase_ingredient', (req, res) => {
