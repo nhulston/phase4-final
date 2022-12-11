@@ -22,7 +22,6 @@ export default function Index() {
                 <RedirectButton href={'/other/leave_swarm'}>Lead Swarm</RedirectButton>
                 <RedirectButton href={'/other/load_drone'}>Load Drone</RedirectButton>
                 <RedirectButton href={'/other/refuel_drone'}>Refuel Drone</RedirectButton>
-                <RedirectButton href={'/other/fuel_required'}>Fuel Required</RedirectButton>
                 <RedirectButton href={'/other/fly_drone'}>Fly Drone</RedirectButton>
                 <RedirectButton href={'/other/purchase_ingredient'}>Purchase Ingredient</RedirectButton>
                 <RedirectButton href={'/other/remove_ingredient'}>Remove Ingredient</RedirectButton>
