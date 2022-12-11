@@ -135,6 +135,154 @@ app.post('/add/location', (req, res) => {
     });
 });
 
+// OTHER
+app.post('/other/start_funding', (req, res) => {
+    const username = req.body.username;
+    const name = req.body.name;
+    db.query('call start_funding(?, ?)', [username, name], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.post('/other/hire_employee', (req, res) => {
+    const username = req.body.username;
+    const id = req.body.id;
+    db.query('call hire_employee(?, ?)', [username, id], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.delete('/other/fire_employee', (req, res) => {
+    const username = req.body.username;
+    const id = req.body.id;
+    db.query('call fire_employee(?, ?)', [username, id], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.post('/other/manage_service', (req, res) => {
+    const username = req.body.username;
+    const id = req.body.id;
+    db.query('call manage_service(?, ?)', [username, id], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.put('/other/takeover_drone', (req, res) => {
+    const username = req.body.username;
+    const drone_id = req.body.drone_id;
+    const drone_tag = req.body.drone_tag;
+    db.query('call takeover_drone(?, ?, ?)', [username, drone_id, drone_tag], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.put('/other/join_swarm', (req, res) => {
+    const drone_id = req.body.drone_id;
+    const drone_tag = req.body.drone_tag;
+    const swarm_leader_drone_tag = req.body.swarm_leader_drone_tag;
+    db.query('call join_swarm(?, ?, ?)', [drone_id, drone_tag, swarm_leader_drone_tag], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.put('/other/leave_swarm', (req, res) => {
+    const drone_id = req.body.drone_id;
+    const swarm_tag = req.body.swarm_tag;
+    db.query('call leave_swarm(?, ?)', [drone_id, swarm_tag], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.put('/other/refuel_drone', (req, res) => {
+    const drone_id = req.body.drone_id;
+    const drone_tag = req.body.drone_tag;
+    const fuel = req.body.fuel;
+    db.query('call refuel_drone(?, ?, ?)', [drone_id, drone_tag, fuel], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+//fuel_required
+//fly_drone
+
+app.post('/other/pruchase_ingredient', (req, res) => {
+    const name = req.body.name;
+    const drone_id = req.body.drone_id;
+    const drone_tag = req.body.drone_tag;
+    const barcode = req.body.barcode;
+    const quantity = req.body.quantity;
+    db.query('call pruchase_ingredient(?, ?, ?, ?, ?)', [name, drone_id, drone_tag, barcode, quantity], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.delete('/other/remove_ingredient', (req, res) => {
+    const barcode = req.body.barcode;
+    db.query('call remove_ingredient(?)', [barcode], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.delete('/other/remove_drone', (req, res) => {
+    const drone_id = req.body.drone_id;
+    const swarm_tag = swarm_tag;
+    db.query('call remove_drone(?, ?)', [drone_id, swarm_tag], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.delete('/other/remove_pilot_role', (req, res) => {
+    const username = req.body.username;
+    db.query('call remove_pilot_role(?)', [username], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
 // QUERYING
 app.get('/username/:username', (req, res) => {
     db.query("select username from users where username=?", [req.params.username], (err, result) => {
