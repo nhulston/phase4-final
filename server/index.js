@@ -288,7 +288,7 @@ app.post('/other/remove_ingredient', (req, res) => {
 
 app.post('/other/remove_drone', (req, res) => {
     const drone_id = req.body.drone_id;
-    const swarm_tag = swarm_tag;
+    const swarm_tag = req.body.swarm_tag;
     db.query('call remove_drone(?, ?)', [drone_id, swarm_tag], (err, result) => {
         if (err) {
             console.log(err);
