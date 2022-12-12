@@ -19,7 +19,7 @@ export default function Index() {
                 <RedirectButton href={'/other/manage_service'}>Manage Service</RedirectButton>
                 <RedirectButton href={'/other/takeover_drone'}>Takeover Drone</RedirectButton>
                 <RedirectButton href={'/other/join_swarm'}>Join Swarm</RedirectButton>
-                <RedirectButton href={'/other/leave_swarm'}>Lead Swarm</RedirectButton>
+                <RedirectButton href={'/other/leave_swarm'}>Leave Swarm</RedirectButton>
                 <RedirectButton href={'/other/load_drone'}>Load Drone</RedirectButton>
                 <RedirectButton href={'/other/refuel_drone'}>Refuel Drone</RedirectButton>
                 <RedirectButton href={'/other/fly_drone'}>Fly Drone</RedirectButton>
