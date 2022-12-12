@@ -13,7 +13,7 @@ export default function takeover_drone() {
   
 
   const take = () => {
-    if (drone_id === ""||username==""||swarm_leader_drone_tag==-1) {
+    if (drone_id === ""||username==""||drone_tag==-1) {
       alert("please fill in fields");
       return;
     }
