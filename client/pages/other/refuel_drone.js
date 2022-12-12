@@ -24,7 +24,14 @@ export default function refuel_drone() {
         alert("Can not have negative fuel");
         return;
     }
-    //gonna add axios later 
+    Axios.post("http://localhost:3001/other/refuel_drone", {
+                drone_id: drone_id,
+                drone_tag: drone_tag,
+                fuel: fuel,
+            }).then(() => {
+                console.log("success");
+                document.location.href="/";
+            });
   };
 
   return (
