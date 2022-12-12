@@ -25,7 +25,14 @@ export default function takeover_drone() {
         alert("Username is too long");
         return;
     }
-    //gonna add axios later 
+    Axios.post("http://localhost:3001/other/takeover_drone", {
+                username: username,
+                drone_id: drone_id,
+                drone_tag: drone_tag,
+            }).then(() => {
+                console.log("success");
+                document.location.href="/";
+            }); 
   };
 
   return (
