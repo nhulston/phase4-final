@@ -18,7 +18,12 @@ export default function remove_pilot_role() {
         alert("Username is too long");
         return;
     }
-    //gonna add axios later 
+    Axios.post("http://localhost:3001/other/remove_pilot_role", {
+                username: username,
+            }).then(() => {
+                console.log("success");
+                document.location.href="/";
+            }); 
   };
 
   return (
