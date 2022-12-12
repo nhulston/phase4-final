@@ -19,7 +19,13 @@ export default function remove_drone() {
         alert("Drone Id too long");
         return;
     }
-    //gonna add axios later 
+    Axios.post("http://localhost:3001/other/remove_drone", {
+                drone_id: drone_id,
+                swarm_tag: swarm_tag,
+            }).then(() => {
+                console.log("success");
+                document.location.href="/";
+            }); 
   };
 
   return (
