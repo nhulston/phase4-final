@@ -219,6 +219,20 @@ app.post('/other/leave_swarm', (req, res) => {
         }
     });
 });
+app.post('/other/load_drone', (req, res) => {
+    const drone_id = req.body.drone_id;
+    const drone_tag = req.body.drone_tag;
+    const barcode = req.body.barcode;
+    const packages = req.body.packages;
+    const price = req.body.price;
+    db.query('call load_drone(?, ?, ?, ?, ?)', [drone_id, drone_tag, barcode, packages, price], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
 app.post('/other/refuel_drone', (req, res) => {
     const drone_id = req.body.drone_id;
     const drone_tag = req.body.drone_tag;
