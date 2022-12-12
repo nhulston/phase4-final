@@ -234,6 +234,7 @@ app.put('/other/refuel_drone', (req, res) => {
 
 //fly_drone
 
+
 app.post('/other/pruchase_ingredient', (req, res) => {
     const name = req.body.name;
     const drone_id = req.body.drone_id;
@@ -331,6 +332,15 @@ app.get('/ingredient/:barcode', (req, res) => {
 });
 app.get('/delivery_service/:id', (req, res) => {
     db.query("select id from delivery_services where id=?", [req.params.id], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.get('/location/:label', (req, res) => {
+    db.query("select label from location where label=?", [req.params.label], (err, result) => {
         if (err) {
             console.log(err);
         } else {

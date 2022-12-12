@@ -20,7 +20,7 @@ export default function refuel_drone() {
         alert("Drone Id too long");
         return;
     }
-    if (fuel<0) {
+    if (fuel < 0) {
         alert("Can not have negative fuel");
         return;
     }
