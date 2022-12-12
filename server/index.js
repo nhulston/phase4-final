@@ -362,6 +362,34 @@ app.get('/location/:label', (req, res) => {
         }
     });
 });
+app.get('/work_for/:username', (req, res) => {
+    db.query("select username from work_for where username=?", [req.params.username], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.get('/delivery_services/:manager', (req, res) => {
+    db.query("select manager from delivery_services where manager=?", [req.params.manager], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+app.get('/drones/:flown_by', (req, res) => {
+    db.query("select flown_by from drones where flown_by=?", [req.params.flown_by], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
 
 // VIEWS
 app.get('/view/owner', (req, res) => {

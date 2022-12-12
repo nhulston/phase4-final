@@ -23,13 +23,34 @@ export default function fire_employee() {
         alert("Username is too long");
         return;
     }
-    Axios.post("http://localhost:3001/other/fire_employee", {
+    Axios.get("http://localhost:3001/work_for/" + username).then(r => {
+            if (r.data.length <= 0) {
+              alert("User does not work for anyone");
+              return;
+            }
+            Axios.get("http://localhost:3001/delivery_services/" + username).then(r => {
+            if (r.data.length > 0) {
+              alert("User can not be fired they are a manager");
+              return;
+            }
+                Axios.get("http://localhost:3001/drones/" + username).then(r => {
+                    if (r.data.length > 0) {
+                    alert("User can not be fired they are flying a drone");
+                    return;
+            }
+            Axios.post("http://localhost:3001/other/fire_employee", {
                 username: username,
                 id: id,
             }).then(() => {
                 console.log("success");
                 document.location.href="/";
-            }); 
+            });
+
+            });
+
+            });
+    });
+    
   };
 
   return (
