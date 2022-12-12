@@ -20,7 +20,14 @@ export default function join_swarm() {
         alert("Drone Id too long");
         return;
     }
-    //gonna add axios later 
+    Axios.post("http://localhost:3001/other/join_swarm", {
+                drone_id: drone_id,
+                drone_tag: drone_tag,
+                swarm_leader_drone_tag: swarm_leader_drone_tag,
+            }).then(() => {
+                console.log("success");
+                document.location.href="/";
+            }); 
   };
 
   return (
