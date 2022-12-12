@@ -7,21 +7,26 @@ import {Button} from "../../components/Button";
 import Axios from "axios";
 
 export default function remove_ingredient() {
-  const [barocde, setBarcode] = useState("");
+  const [barcode, setBarcode] = useState("");
 
 
 
   const remove = () => {
-    if (barocde=="") {
+    if (barcode=="") {
       alert("please fill in fields");
       return;
     }
 
-    if (barocde.length>40) {
+    if (barcode.length>40) {
         alert("Barcode too long");
         return;
     }
-    //gonna add axios later 
+    Axios.post("http://localhost:3001/other/remove_ingredient", {
+                barcode: barcode,
+            }).then(() => {
+                console.log("success");
+                document.location.href="/";
+            });
   };
 
   return (
@@ -33,7 +38,7 @@ export default function remove_ingredient() {
 
       <Navbar/>
       <Wrapper>
-        <Field label={"Barcode"} value={barocde} onChange={setBarcode}/>
+        <Field label={"Barcode"} value={barcode} onChange={setBarcode}/>
         <Button onClick={remove}>Remove Ingredient</Button>
       </Wrapper>
     </div>
