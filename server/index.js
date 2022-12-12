@@ -160,7 +160,7 @@ app.post('/other/hire_employee', (req, res) => {
     });
 });
 
-app.delete('/other/fire_employee', (req, res) => {
+app.post('/other/fire_employee', (req, res) => {
     const username = req.body.username;
     const id = req.body.id;
     db.query('call fire_employee(?, ?)', [username, id], (err, result) => {
@@ -184,7 +184,7 @@ app.post('/other/manage_service', (req, res) => {
     });
 });
 
-app.put('/other/takeover_drone', (req, res) => {
+app.post('/other/takeover_drone', (req, res) => {
     const username = req.body.username;
     const drone_id = req.body.drone_id;
     const drone_tag = req.body.drone_tag;
@@ -196,7 +196,7 @@ app.put('/other/takeover_drone', (req, res) => {
         }
     });
 });
-app.put('/other/join_swarm', (req, res) => {
+app.post('/other/join_swarm', (req, res) => {
     const drone_id = req.body.drone_id;
     const drone_tag = req.body.drone_tag;
     const swarm_leader_drone_tag = req.body.swarm_leader_drone_tag;
@@ -208,7 +208,7 @@ app.put('/other/join_swarm', (req, res) => {
         }
     });
 });
-app.put('/other/leave_swarm', (req, res) => {
+app.post('/other/leave_swarm', (req, res) => {
     const drone_id = req.body.drone_id;
     const swarm_tag = req.body.swarm_tag;
     db.query('call leave_swarm(?, ?)', [drone_id, swarm_tag], (err, result) => {
@@ -219,7 +219,7 @@ app.put('/other/leave_swarm', (req, res) => {
         }
     });
 });
-app.put('/other/refuel_drone', (req, res) => {
+app.post('/other/refuel_drone', (req, res) => {
     const drone_id = req.body.drone_id;
     const drone_tag = req.body.drone_tag;
     const fuel = req.body.fuel;
@@ -250,7 +250,7 @@ app.post('/other/pruchase_ingredient', (req, res) => {
     });
 });
 
-app.delete('/other/remove_ingredient', (req, res) => {
+app.post('/other/remove_ingredient', (req, res) => {
     const barcode = req.body.barcode;
     db.query('call remove_ingredient(?)', [barcode], (err, result) => {
         if (err) {
@@ -261,7 +261,7 @@ app.delete('/other/remove_ingredient', (req, res) => {
     });
 });
 
-app.delete('/other/remove_drone', (req, res) => {
+app.post('/other/remove_drone', (req, res) => {
     const drone_id = req.body.drone_id;
     const swarm_tag = swarm_tag;
     db.query('call remove_drone(?, ?)', [drone_id, swarm_tag], (err, result) => {
@@ -273,7 +273,7 @@ app.delete('/other/remove_drone', (req, res) => {
     });
 });
 
-app.delete('/other/remove_pilot_role', (req, res) => {
+app.post('/other/remove_pilot_role', (req, res) => {
     const username = req.body.username;
     db.query('call remove_pilot_role(?)', [username], (err, result) => {
         if (err) {
