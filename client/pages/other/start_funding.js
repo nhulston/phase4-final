@@ -23,7 +23,13 @@ export default function start_funding() {
         alert("Restaurant name is too long");
         return;
     }
-    //gonna add axios later 
+    Axios.post("http://localhost:3001/other/start_funding", {
+                username: username,
+                name: name,
+            }).then(() => {
+                console.log("success");
+                document.location.href="/";
+            });
   };
 
   return (
