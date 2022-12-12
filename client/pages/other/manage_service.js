@@ -23,7 +23,13 @@ export default function manage_service() {
         alert("Username is too long");
         return;
     }
-    //gonna add axios later 
+    Axios.post("http://localhost:3001/other/manage_service", {
+                username: username,
+                id: id,
+            }).then(() => {
+                console.log("success");
+                document.location.href="/";
+            });
   };
 
   return (
