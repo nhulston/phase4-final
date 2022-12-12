@@ -246,7 +246,18 @@ app.post('/other/refuel_drone', (req, res) => {
     });
 });
 
-//fly_drone
+app.post('/other/fly_drone', (req, res) => {
+    const drone_id = req.body.drone_id;
+    const drone_tag = req.body.drone_tag;
+    const arrival = req.body.arrival;
+    db.query('call fly_drone(?, ?, ?)', [drone_id, drone_tag, arrival], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
 
 
 app.post('/other/pruchase_ingredient', (req, res) => {
