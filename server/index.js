@@ -260,13 +260,13 @@ app.post('/other/fly_drone', (req, res) => {
 });
 
 
-app.post('/other/pruchase_ingredient', (req, res) => {
+app.post('/other/purchase_ingredient', (req, res) => {
     const name = req.body.name;
     const drone_id = req.body.drone_id;
     const drone_tag = req.body.drone_tag;
     const barcode = req.body.barcode;
     const quantity = req.body.quantity;
-    db.query('call pruchase_ingredient(?, ?, ?, ?, ?)', [name, drone_id, drone_tag, barcode, quantity], (err, result) => {
+    db.query('call purchase_ingredient(?, ?, ?, ?, ?)', [name, drone_id, drone_tag, barcode, quantity], (err, result) => {
         if (err) {
             console.log(err);
         } else {
