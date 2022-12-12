@@ -6,7 +6,7 @@ import Field from "../../components/Field";
 import {Button} from "../../components/Button";
 import Axios from "axios";
 
-export default function join_swarm() {
+export default function takeover_drone() {
   const [username, setUsername] = useState("");
   const [drone_id, setDrone_id] = useState("");
   const [drone_tag, setDrone_tag] = useState(-1);
