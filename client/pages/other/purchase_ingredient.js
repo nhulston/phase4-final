@@ -10,12 +10,12 @@ export default function purchase_ingredient() {
   const [name, setName] = useState("");
   const [drone_id, setDrone_id] = useState("");
   const [drone_tag, setDrone_tag] = useState(-1);
-  const [barocde, setBarcode] = useState("");
+  const [barcode, setBarcode] = useState("");
   const [quantity, setQuantity] = useState(-1);
 
 
   const purchase = () => {
-    if (drone_id === ""||drone_tag==-1||quantity==-1||name==""||barocde=="") {
+    if (drone_id === ""||drone_tag==-1||quantity==-1||name==""||barcode=="") {
       alert("please fill in fields");
       return;
     }
@@ -31,11 +31,20 @@ export default function purchase_ingredient() {
         alert("Quantity can not be negative");
         return;
     }
-    if (barocde.length>40) {
+    if (barcode.length>40) {
         alert("Barcode too long");
         return;
     }
-    //gonna add axios later 
+    Axios.post("http://localhost:3001/other/purchase_ingredient", {
+                name: name,
+                drone_id: drone_id,
+                drone_tag: drone_tag,
+                barcode: barcode,
+                quantity: quantity,
+            }).then(() => {
+                console.log("success");
+                document.location.href="/";
+            });
   };
 
   return (
@@ -50,7 +59,7 @@ export default function purchase_ingredient() {
         <Field label={"Restaurant Name"} value={name} onChange={setName}/>
         <Field label={"Drone_Id"} value={drone_id} onChange={setDrone_id}/>
         <Field label={"Drone_Tag"} value={drone_tag} onChange={setDrone_tag}/>
-        <Field label={"Barcode"} value={barocde} onChange={setBarcode}/>
+        <Field label={"Barcode"} value={barcode} onChange={setBarcode}/>
         <Field label={"Quantity"} value={quantity} onChange={setQuantity}/>
         <Button onClick={purchase}>Purchase Ingredient</Button>
       </Wrapper>
