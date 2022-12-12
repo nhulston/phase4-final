@@ -9,13 +9,13 @@ import Axios from "axios";
 export default function load_package() {
   const [drone_id, setDrone_id] = useState("");
   const [drone_tag, setDrone_tag] = useState(-1);
-  const [barocde, setBarcode] = useState("");
+  const [barcode, setBarcode] = useState("");
   const [packages, setPackages] = useState(-1);
   const [price, setPrice] = useState(-1);
 
 
   const load = () => {
-    if (drone_id === ""||drone_tag==-1||packages==-1||price==-1||barocde=="") {
+    if (drone_id === ""||drone_tag==-1||packages==-1||price==-1||barcode=="") {
       alert("please fill in fields");
       return;
     }
@@ -23,7 +23,7 @@ export default function load_package() {
         alert("Drone Id too long");
         return;
     }
-    if (barocde.length > 40) {
+    if (barcode.length > 40) {
         alert("Barcode too long");
         return;
     }
@@ -35,7 +35,16 @@ export default function load_package() {
         alert("Price cannot be negative");
         return;
     }
-    //gonna add axios later 
+    Axios.post("http://localhost:3001/other/load_drone", {
+                drone_id: drone_id,
+                drone_tag: drone_tag,
+                barcode: barcode,
+                packages: packages,
+                price: price,
+            }).then(() => {
+                console.log("success");
+                document.location.href="/";
+            });
   };
 
   return (
@@ -49,7 +58,7 @@ export default function load_package() {
       <Wrapper>
         <Field label={"Drone_Id"} value={drone_id} onChange={setDrone_id}/>
         <Field label={"Drone_Tag"} value={drone_tag} onChange={setDrone_tag}/>
-        <Field label={"Barcode"} value={barocde} onChange={setBarcode}/>
+        <Field label={"Barcode"} value={barcode} onChange={setBarcode}/>
         <Field label={"Packages to add"} value={packages} onChange={setPackages}/>
         <Field label={"Price"} value={price} onChange={setPrice}/>
         <Button onClick={load}>Load Drone</Button>
