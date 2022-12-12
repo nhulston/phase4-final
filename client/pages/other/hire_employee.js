@@ -23,7 +23,13 @@ export default function hire_employee() {
         alert("Username is too long");
         return;
     }
-    //gonna add axios later 
+    Axios.post("http://localhost:3001/other/hire_employee", {
+                username: username,
+                id: id,
+            }).then(() => {
+                console.log("success");
+                document.location.href="/";
+            }); 
   };
 
   return (
