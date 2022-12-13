@@ -1,5 +1,5 @@
 ## How to run
-Make sure you have react, express, and mysql installed
+Make sure you have react, node, and mysql installed
 
 Starting the front end
 1. `cd client`
